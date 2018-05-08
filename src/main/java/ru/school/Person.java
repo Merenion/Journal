@@ -28,4 +28,12 @@ public class Person implements IPerson{
     public void setClassroom(IClass classroom) {
         this.classroom = classroom;
     }
+
+    @Override
+    public String toString() {
+        return " {" +
+                "name='" + name + '\'' +
+                ", classroom=" + classroom +
+                '}';
+    }
 }
