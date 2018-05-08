@@ -12,4 +12,6 @@ public interface IClass {
     Set<IJournal> getJournals();
     IPerson getPerson (String name);
     IPerson getJurnal (String subject);
+    void setBoss (IPerson boss);
+    Boss getBoss ();
 }

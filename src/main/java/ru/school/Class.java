@@ -3,15 +3,17 @@ package ru.school;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Class implements IClass{
+public class Class implements IClass {
 
-    private char unit;
+    private String letter;
     private int level;
+    private IPerson boss;
     private Set<IJournal> journals = new HashSet<IJournal>();
     private Set<IPerson> students = new HashSet<IPerson>();
 
-    public Class(char unit, int level) {
-        this.unit = unit;
+
+    public Class(String letter, int level) {
+        this.letter = letter;
         this.level = level;
     }
 
@@ -56,9 +58,19 @@ public class Class implements IClass{
     }
 
     @Override
+    public void setBoss(IPerson boss) {
+
+    }
+
+    @Override
+    public Boss getBoss() {
+        return null;
+    }
+
+    @Override
     public String toString() {
         return "Class{" +
-                "unit=" + unit +
+                "letter=" + letter +
                 ", level=" + level +
                 '}';
     }

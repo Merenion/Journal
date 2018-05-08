@@ -16,7 +16,7 @@ public class Journal implements IJournal{
     }
 
     @Override
-    public void addRating(IPerson person, Rating rating) {
+    public void addRating(IPerson person, Rating rating, Data data) {
 
     }
 
