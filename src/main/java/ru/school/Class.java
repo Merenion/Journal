@@ -18,12 +18,12 @@ public class Class implements IClass {
     }
 
     @Override
-    public void addJournal(Journal journal) {
+    public void addJournal(IJournal journal) {
 
     }
 
     @Override
-    public void removeJournal(Journal journal) {
+    public void removeJournal(String nameSubject) {
 
     }
 
@@ -33,7 +33,7 @@ public class Class implements IClass {
     }
 
     @Override
-    public void removeStudent(IPerson person) {
+    public void removeStudent(String name) {
 
     }
 
@@ -53,7 +53,7 @@ public class Class implements IClass {
     }
 
     @Override
-    public IPerson getJurnal(String subject) {
+    public IJournal getJournal(String subject) {
         return null;
     }
 
@@ -64,6 +64,16 @@ public class Class implements IClass {
 
     @Override
     public Boss getBoss() {
+        return null;
+    }
+
+    @Override
+    public String getListPerson() {
+        return null;
+    }
+
+    @Override
+    public String getListJournal() {
         return null;
     }
 

@@ -4,14 +4,16 @@ import java.util.Set;
 
 public interface IClass {
 
-    void addJournal (Journal journal);
-    void removeJournal (Journal journal);
+    void addJournal (IJournal journal);
+    void removeJournal (String nameSubject);
     void addStudent (IPerson person);
-    void removeStudent (IPerson person);
+    void removeStudent (String name);
     Set<IPerson> getStudents();
     Set<IJournal> getJournals();
     IPerson getPerson (String name);
-    IPerson getJurnal (String subject);
+    IJournal getJournal (String subject);
     void setBoss (IPerson boss);
     Boss getBoss ();
+    String getListPerson();
+    String getListJournal();
 }

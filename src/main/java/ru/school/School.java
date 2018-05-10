@@ -13,12 +13,17 @@ public class School implements ISchool {
     }
 
     @Override
-    public void removeClass(char unit, int level) {
+    public void removeClass(String unit, int level) {
 
     }
 
     @Override
-    public IClass getClass(char unit, int level) {
+    public IClass getClass(String unit, int level) {
+        return null;
+    }
+
+    @Override
+    public String getListClasses() {
         return null;
     }
 }
