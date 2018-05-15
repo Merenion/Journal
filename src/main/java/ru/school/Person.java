@@ -11,21 +11,25 @@ public class Person implements IPerson{
 
     @Override
     public String getName() {
+        Main.log.finer("Use method");
         return name;
     }
 
     @Override
     public void setName(String name) {
+        Main.log.finer("Use method");
         this.name = name;
     }
 
     @Override
     public IClass getClassroom() {
+        Main.log.finer("Use method");
         return classroom;
     }
 
     @Override
     public void setClassroom(IClass classroom) {
+        Main.log.finer("Use method");
         this.classroom = classroom;
     }
 
@@ -33,7 +37,7 @@ public class Person implements IPerson{
     public String toString() {
         return " {" +
                 "name='" + name + '\'' +
-                ", classroom=" + classroom +
+                classroom +
                 '}';
     }
 }

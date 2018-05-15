@@ -1,11 +1,12 @@
 package ru.school;
 
 import javax.xml.crypto.Data;
+import java.util.Set;
 
 public interface IJournal {
-    void addRating (IPerson person, Rating rating, Data data);
+    void addRating (Rating rating);
     void deleteRating (IPerson person,Data data);
-    void getRating (Data data ,IPerson person);
-    void getRatings (IPerson person);
-
+    Rating getRating (Data data ,IPerson person);
+    Set<Rating> getRatings (IPerson person);
+    String getListRatings (IPerson person);
 }

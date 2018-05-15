@@ -19,69 +19,76 @@ public class Class implements IClass {
 
     @Override
     public void addJournal(IJournal journal) {
-
+        Main.log.finer("Use method");
     }
 
     @Override
     public void removeJournal(String nameSubject) {
-
+        Main.log.finer("Use method");
     }
 
     @Override
     public void addStudent(IPerson person) {
-
+        Main.log.finer("Use method");
     }
 
     @Override
     public void removeStudent(String name) {
-
+        Main.log.finer("Use method");
     }
 
     @Override
     public Set<IPerson> getStudents() {
+        Main.log.finer("Use method");
         return null;
     }
 
     @Override
     public Set<IJournal> getJournals() {
+        Main.log.finer("Use method");
         return null;
     }
 
     @Override
     public IPerson getPerson(String name) {
+        Main.log.finer("Use method");
         return null;
     }
 
     @Override
     public IJournal getJournal(String subject) {
+        Main.log.finer("Use method");
         return null;
     }
 
     @Override
     public void setBoss(IPerson boss) {
-
+        Main.log.finer("Use method");
     }
 
     @Override
     public Boss getBoss() {
+        Main.log.finer("Use method");
         return null;
     }
 
     @Override
     public String getListPerson() {
+        Main.log.finer("Use method");
         return null;
     }
 
     @Override
     public String getListJournal() {
+        Main.log.finer("Use method");
         return null;
     }
 
     @Override
     public String toString() {
-        return "Class{" +
+        return "[" +
                 "letter=" + letter +
                 ", level=" + level +
-                '}';
+                ']';
     }
 }

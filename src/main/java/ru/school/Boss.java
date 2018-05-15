@@ -9,4 +9,6 @@ public class Boss extends Person{
     public String toString() {
         return "Boss"+super.toString();
     }
+
+    
 }
