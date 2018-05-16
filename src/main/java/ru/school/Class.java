@@ -91,4 +91,14 @@ public class Class implements IClass {
                 ", level=" + level +
                 ']';
     }
+
+    @Override
+    public String getLetter() {
+        return letter;
+    }
+
+    @Override
+    public int getLevel() {
+        return level;
+    }
 }

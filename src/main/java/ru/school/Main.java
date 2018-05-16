@@ -3,6 +3,7 @@ package ru.school;
 import ru.school.log.FormatterForFiner;
 import ru.school.log.FormatterUsers;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.*;
 
@@ -19,6 +20,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        File file = new File("%h/desktop/logJournal/LogFiner.log");
         Main.log.info("init program");
         ITui tui = new Tui(new School());
         tui.mainSelect();
@@ -36,7 +38,7 @@ public class Main {
 
     private static void initFileConfig() {
         try {
-            Handler handler = new FileHandler("%h/desktop/logJournal/LogUse.log");
+            Handler handler = new FileHandler("%h/desktop/LogUse.log");
             handler.setFormatter(new FormatterUsers());
             handler.setLevel(Level.CONFIG);
             log.addHandler(handler);
@@ -48,12 +50,11 @@ public class Main {
     private static void initFileFiner() {
         Handler handler = null;
         try {
-            handler= new FileHandler("%h/desktop/logJournal/LogFiner.log");
+            handler= new FileHandler("%h/desktop/LogFiner.log");
             handler.setFormatter(new FormatterForFiner());
             handler.setLevel(Level.FINER);
             log.addHandler(handler);
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 

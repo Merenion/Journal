@@ -36,6 +36,9 @@ public class CreatorDefault implements ICreator{
 
     @Override
     public Rating createRating (Rating.ValueRating rating, Date data, IPerson person){
+//        data.setHours(0);
+//        data.setMinutes(0);
+//        data.setSeconds(0);
         Main.log.finer("Use method");
         return new Rating(rating,data,person);
     }

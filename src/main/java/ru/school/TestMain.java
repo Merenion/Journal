@@ -9,13 +9,10 @@ import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.partitioningBy;
 
 public class TestMain {
-    public static void main(String[] args) {
-        System.out.println(get0().isPresent());
+    public static void main(String[] args){
     }
 
-    static Optional<String> get0() {
-        Map<Integer,List<Integer>> map = Stream.of(1,3,5,2,1,3,-3).collect(groupingBy(x -> x));
-    }
+
 }
 
 class Peerson {

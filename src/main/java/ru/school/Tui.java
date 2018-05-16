@@ -31,24 +31,31 @@ public class Tui implements ITui {
     }
 
     @Override
-    public void mainSelect() {
-        String line = (new Scanner(System.in)).nextLine();
+    public synchronized void mainSelect() {
+        Scanner scanner = new Scanner(System.in);
+        String line = scanner.nextLine();
         String[] arrayLine = line.split("\"");
         switch (arrayLine[0]) {
             case "create new school":
                 Main.log.config("User создает новую школу");
                 school = creator.createSchool();
+                System.out.println("!Done");
                 break;
             case "control classes":
+                System.out.println("!Done");
                 controlClasses();
+                scanner.close();
                 break;
             case "control persons ":
+                System.out.println("!Done");
                 controlPersons(arrayLine[1], parseInt(arrayLine[2]));
                 break;
             case "control journals ":
+                System.out.println("!Done");
                 controlJournals(arrayLine[1], parseInt(arrayLine[2]));
                 break;
             case "control rating ":
+                System.out.println("!Done");
                 controlRating(arrayLine[1], parseInt(arrayLine[2]), arrayLine[3]);
                 break;
             case "help":
@@ -63,8 +70,10 @@ public class Tui implements ITui {
     }
 
     @Override
-    public void controlClasses() {
-        String line = (new Scanner(System.in)).nextLine();
+    public synchronized void controlClasses() {
+        Scanner scanner = new Scanner(System.in);
+        scanner.
+        String line = scanner.nextLine();
         String[] arrayLine = line.split("\"");
         switch (arrayLine[0]) {
             case "add class ":
@@ -81,6 +90,7 @@ public class Tui implements ITui {
                 break;
             case "back":
                 System.out.println("Done (return)");
+                scanner.close();
                 return;
             case "help":
                 System.out.println(ANSI_YELLOW + getHelpFromFile(new File("src/main/resources/helpControlClasses.txt")) + ANSI_RESET);
@@ -125,7 +135,7 @@ public class Tui implements ITui {
                 break;
             case "back":
                 System.out.println("Done (return)");
-                return;
+                return; //gjghj,jdfnm gjtyznm yf vtnjl!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             default:
                 System.out.println(ANSI_YELLOW + "Неверная команда!" + ANSI_RESET);
                 controlPersons(letter, level);

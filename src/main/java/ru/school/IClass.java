@@ -16,4 +16,6 @@ public interface IClass {
     Boss getBoss ();
     String getListPerson();
     String getListJournal();
+    String getLetter();
+    int getLevel();
 }
