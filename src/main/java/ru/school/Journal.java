@@ -53,6 +53,11 @@ public class Journal implements IJournal{
     }
 
     @Override
+    public String getNameSubject() {
+        return nameSubject;
+    }
+
+    @Override
     public String toString() {
         return "Journal{" +
                 "nameSubject='" + nameSubject + '\'' +

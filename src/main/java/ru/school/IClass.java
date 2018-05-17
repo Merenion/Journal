@@ -10,10 +10,10 @@ public interface IClass {
     void removeStudent (String name);
     Set<IPerson> getStudents();
     Set<IJournal> getJournals();
-    IPerson getPerson (String name);
+    IPerson getStudent(String name);
     IJournal getJournal (String subject);
     void setBoss (IPerson boss);
-    Boss getBoss ();
+    IPerson getBoss ();
     String getListPerson();
     String getListJournal();
     String getLetter();

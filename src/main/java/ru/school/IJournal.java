@@ -9,4 +9,5 @@ public interface IJournal {
     Rating getRating (Data data ,IPerson person);
     Set<Rating> getRatings (IPerson person);
     String getListRatings (IPerson person);
+    String getNameSubject();
 }

@@ -44,7 +44,6 @@ public class Tui implements ITui {
             case "control classes":
                 System.out.println("!Done");
                 controlClasses();
-                scanner.close();
                 break;
             case "control persons ":
                 System.out.println("!Done");
@@ -72,7 +71,6 @@ public class Tui implements ITui {
     @Override
     public synchronized void controlClasses() {
         Scanner scanner = new Scanner(System.in);
-        scanner.
         String line = scanner.nextLine();
         String[] arrayLine = line.split("\"");
         switch (arrayLine[0]) {
@@ -90,8 +88,8 @@ public class Tui implements ITui {
                 break;
             case "back":
                 System.out.println("Done (return)");
-                scanner.close();
-                return;
+                mainSelect();
+                break;
             case "help":
                 System.out.println(ANSI_YELLOW + getHelpFromFile(new File("src/main/resources/helpControlClasses.txt")) + ANSI_RESET);
                 break;
@@ -105,11 +103,8 @@ public class Tui implements ITui {
 
     @Override
     public void controlPersons(String letter, int level) {
-        if (school.getClass(letter, level) == null) {
-            Main.log.warning("Класс с заданной буквой и уровнем не найден.");
-            return;
-        }
         IClass aClass = school.getClass(letter, level);
+        if (aClass == null) return;
         String line = (new Scanner(System.in)).nextLine();
         String[] arrayLine = line.split("\"");
         switch (arrayLine[0]) {
@@ -131,11 +126,12 @@ public class Tui implements ITui {
                 System.out.println(aClass.getListPerson());
                 break;
             case "help":
-                System.out.println(ANSI_YELLOW + getHelpFromFile(new File("src/main/resources/helpСontrolPersons.txt")) + ANSI_RESET);
+                System.out.println(ANSI_YELLOW + getHelpFromFile(new File("src/main/resources/helpControlPersons.txt")) + ANSI_RESET);
                 break;
             case "back":
                 System.out.println("Done (return)");
-                return; //gjghj,jdfnm gjtyznm yf vtnjl!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                mainSelect();
+                break;
             default:
                 System.out.println(ANSI_YELLOW + "Неверная команда!" + ANSI_RESET);
                 controlPersons(letter, level);
@@ -169,7 +165,8 @@ public class Tui implements ITui {
                 break;
             case "back":
                 System.out.println("Done (return)");
-                return;
+                mainSelect();
+                break;
             case "help":
                 System.out.println(ANSI_YELLOW + getHelpFromFile(new File("src/main/resources/helpСontrolJournals.txt")) + ANSI_RESET);
                 break;
@@ -201,7 +198,7 @@ public class Tui implements ITui {
                         + aClass + ". Дата оценки " + arrayLine[3] + "." + arrayLine[4] + "." + arrayLine[5]);
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(parseInt(arrayLine[3]), parseInt(arrayLine[4]), parseInt(arrayLine[5]));
-                IPerson person = aClass.getPerson(arrayLine[1]);
+                IPerson person = aClass.getStudent(arrayLine[1]);
                 Rating rating = null;
                 for (Rating.ValueRating ratings : Rating.ValueRating.values()) {
                     if (ratings.equals(arrayLine[2]))
@@ -214,12 +211,12 @@ public class Tui implements ITui {
                         + aClass + " которая была поставленна " + arrayLine[2] + "." + arrayLine[3] + "." + arrayLine[4]);
                 Calendar calendar1 = Calendar.getInstance();
                 calendar1.set(parseInt(arrayLine[2]), parseInt(arrayLine[3]), parseInt(arrayLine[4]));
-                IPerson person1 = aClass.getPerson(arrayLine[1]);
+                IPerson person1 = aClass.getStudent(arrayLine[1]);
                 journal.deleteRating(person1, (Data) calendar1.getTime());
                 break;
             case "show list rating ":
                 Main.log.config("User просматривает оценки персонажа " + arrayLine[1] + " " + aClass);
-                IPerson person2 = aClass.getPerson(arrayLine[1]);
+                IPerson person2 = aClass.getStudent(arrayLine[1]);
                 System.out.println(aClass);
                 System.out.println(person2);
                 System.out.println(journal.getListRatings(person2));
@@ -229,7 +226,8 @@ public class Tui implements ITui {
                 break;
             case "back":
                 System.out.println("Done (return)");
-                return;
+                mainSelect();
+                break;
             default:
                 System.out.println(ANSI_YELLOW + "Неверный команда!" + ANSI_RESET);
                 controlRating(letter, level, nameSubject);

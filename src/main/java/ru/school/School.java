@@ -49,11 +49,10 @@ public class School implements ISchool {
     public String getListClasses() {
         Main.log.finer("Use method");
         StringBuilder sb = new StringBuilder("Classes:");
-
         if (classes.size() != 0) {
-            int i=1;
+            int i = 1;
             for (IClass iClass : classes)
-                sb.append("\n"+(i++) +") "+ iClass);
+                sb.append("\n").append(i++).append(") ").append(iClass);
         } else {
             sb.append("Пусто");
         }
