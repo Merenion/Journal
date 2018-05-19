@@ -1,6 +1,8 @@
 package ru.school;
 
-public interface IPerson {
+import java.io.Serializable;
+
+public interface IPerson extends Serializable {
     void setName(String name);
     String getName();
     void setClassroom(IClass classroom);

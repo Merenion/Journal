@@ -1,6 +1,8 @@
 package ru.school;
 
 import java.util.Date;
+/**класс создающий обьекты, если тут поменять реализацию какого либо интерфейса,
+ * то он будет использоваться во всей программе*/
 
 public class CreatorDefault implements ICreator{
 
@@ -36,9 +38,6 @@ public class CreatorDefault implements ICreator{
 
     @Override
     public Rating createRating (Rating.ValueRating rating, Date data, IPerson person){
-//        data.setHours(0);
-//        data.setMinutes(0);
-//        data.setSeconds(0);
         Main.log.finer("Use method");
         return new Rating(rating,data,person);
     }

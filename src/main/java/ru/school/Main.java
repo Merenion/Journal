@@ -12,21 +12,25 @@ public class Main {
     public static final Logger log = Logger.getLogger("Param Pam Pam");
 
     static {
+        //обязательно добавить файл конфигурации log.properties
+        //  -Djava.util.logging.config.file=........
+
         propertiesLoad();
+        //добавление хэндлеров
         initFileConfig();
         initFileFiner();
-        initConsFiner();
+        initConsInfo();
         log.setUseParentHandlers(false);
     }
 
     public static void main(String[] args) {
-        File file = new File("%h/desktop/logJournal/LogFiner.log");
+        School school = Serializer.getSerializer().reader(); //загружием сохранение
         Main.log.info("init program");
-        ITui tui = new Tui(new School());
+        ITui tui = new Tui(school);
         tui.mainSelect();
     }
 
-
+    /**Загрузка файла конфигураций логера*/
     private static void propertiesLoad() {
         try {
             LogManager.getLogManager().readConfiguration();
@@ -36,6 +40,8 @@ public class Main {
         }
     }
 
+    /**добавление хэндлера для сохранения логов в файл с уровня Config
+     * В ЭТОТ ФАЙЛ БУДУТ ЗАПИСЫВАТЬСЯ ВСЕ ДЕЙСТВЯ ПОЛЬЗОВАТЕЛЯ*/
     private static void initFileConfig() {
         try {
             Handler handler = new FileHandler("%h/desktop/LogUse.log");
@@ -47,6 +53,8 @@ public class Main {
         }
     }
 
+    /**добавление хэндлера для сохранения логов в файл с уровня FINER
+     * В ЭТОТ ФАЙЛ записывается все что только можно...*/
     private static void initFileFiner() {
         Handler handler = null;
         try {
@@ -58,11 +66,20 @@ public class Main {
         }
     }
 
+    /**вывод в консоль логи начиная с уровня finer*/
     private static void initConsFiner() {
             Handler handler = new ConsoleHandler();
             handler.setFormatter(new FormatterForFiner());
             handler.setLevel(Level.FINER);
             log.addHandler(handler);
+    }
+
+    /**вывод в консоль логи начиная с уровня info*/
+    private static void initConsInfo() {
+        Handler handler = new ConsoleHandler();
+        handler.setFormatter(new FormatterForFiner());
+        handler.setLevel(Level.INFO);
+        log.addHandler(handler);
     }
 }
 

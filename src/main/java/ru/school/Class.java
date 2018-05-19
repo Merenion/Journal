@@ -1,14 +1,15 @@
 package ru.school;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-public class Class implements IClass {
+public class Class implements IClass,Serializable {
 
-    private String letter;
-    private int level;
-    private IPerson boss;
+    private String letter; //буква класса
+    private int level;     //цыфра класса
+    private IPerson boss;  //классный руководитель
     private Set<IJournal> journals = new HashSet<IJournal>();
     private Set<IPerson> students = new HashSet<IPerson>();
 
@@ -81,7 +82,7 @@ public class Class implements IClass {
         Main.log.finer("Use method");
         Optional optional = students.stream().filter(x -> x.getName().equals(name)).findAny();
         if (!optional.isPresent()) {
-            Main.log.warning("Такого студента не существует");
+            Main.log.warning("Студент не найден");
             return null;
         }
         return (IPerson) optional.get();
@@ -92,7 +93,7 @@ public class Class implements IClass {
         Main.log.finer("Use method");
         Optional optional = journals.stream().filter(x -> x.getNameSubject().equals(subject)).findAny();
         if (!optional.isPresent()) {
-            Main.log.warning("Такого журнала не существует");
+            Main.log.warning("Журнал не найден");
             return null;
         }
         return (IJournal) optional.get();
@@ -122,6 +123,8 @@ public class Class implements IClass {
         } else {
             sb.append("Пусто");
         }
+        if (boss!=null)
+            sb.append("\n"+boss);
         return sb.toString();
     }
 
@@ -136,8 +139,6 @@ public class Class implements IClass {
         } else {
             sb.append("Пусто");
         }
-        if (boss!=null)
-            sb.append("\n").append(boss);
         return sb.toString();
     }
 

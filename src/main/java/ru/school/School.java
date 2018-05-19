@@ -2,12 +2,17 @@ package ru.school;
 
 import jdk.nashorn.internal.runtime.options.Option;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.logging.Logger;
 
-public class School implements ISchool {
+public class School implements ISchool, Serializable {
+
+    /**Хранит классы*/
+
+    private static final long serialVersionUID = 123;
 
     private Set<IClass> classes = new HashSet<IClass>();
 

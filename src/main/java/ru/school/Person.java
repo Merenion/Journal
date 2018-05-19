@@ -1,6 +1,10 @@
 package ru.school;
 
-public class Person implements IPerson{
+import java.io.Serializable;
+
+/**Родительский класс для студента и классного руководителя (Student, Boss)*/
+
+public class Person implements IPerson {
     private String name;
     private IClass classroom;
 
@@ -11,7 +15,6 @@ public class Person implements IPerson{
 
     @Override
     public String getName() {
-        Main.log.finer("Use method");
         return name;
     }
 

@@ -1,8 +1,9 @@
 package ru.school;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Rating {
+public class Rating implements Serializable {
 
     enum ValueRating {A(5),B(4),C(3),D(2),F(1);
         int priority;
@@ -15,15 +16,17 @@ public class Rating {
         }
     }
 
-    public Rating(ValueRating rating, Date date, IPerson person) {
+    Rating(ValueRating rating, Date date, IPerson person) {
         this.rating = rating.getPriority();
         this.date = date;
         this.person = person;
+        letterRating = rating.toString();
     }
 
     private int rating;
-    Date date;
-    IPerson person;
+    private String letterRating;
+    private Date date;
+    private IPerson person;
 
     public int getRating() {
         return rating;
@@ -40,8 +43,8 @@ public class Rating {
     @Override
     public String toString() {
         return "{" +
-                "value=" + rating +
-                ", date=" + date +
+                "value = " + rating + "("+letterRating+")"+
+                ", date = " + date +
                 '}';
     }
 }
